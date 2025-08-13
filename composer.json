@@ -1,0 +1,21 @@
+{
+  "name": "maderarasto/php-mvclib",
+  "description": "A library for creating MVC application.",
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rastislav",
+      "email": "maderarasto@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "maderasrasto\\MvcLib\\": "src/"
+    }
+  }
+}
