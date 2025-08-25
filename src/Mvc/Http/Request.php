@@ -2,6 +2,8 @@
 
 namespace Mvc\Http;
 
+use Mvc\Routing\Route;
+
 class Request
 {
     public const METHOD_GET = 'GET';
@@ -58,10 +60,12 @@ class Request
      */
     protected array $files;
 
+    protected Route $route;
+
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = urldecode($_SERVER['REQUEST_URI']);
         $this->headers = getallheaders();
         $this->cookies = $_COOKIE;
         $this->query = $_GET;
@@ -88,6 +92,16 @@ class Request
     public function uri(): string
     {
         return $this->uri;
+    }
+
+    public function route(): Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(Route $route)
+    {
+        $this->route = $route;
     }
 
     /**

@@ -2,8 +2,8 @@
 
 namespace Mvc\Facades;
 
-use Mvc\Facade;
 use Mvc\Http\UploadedFile;
+use Mvc\Core\Facade;
 
 /**
  * @method static string method()

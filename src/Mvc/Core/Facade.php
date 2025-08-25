@@ -1,8 +1,6 @@
 <?php
 
-namespace Mvc;
-
-use maderarasto\Mvc\Application;
+namespace Mvc\Core;
 
 abstract class Facade
 {
@@ -16,7 +14,7 @@ abstract class Facade
     public static function __callStatic(string $name, array $arguments)
     {
         if (!static::$app) {
-            throw new \Exception('Application not set');
+            throw new \Exception('Core not set');
         }
 
         $binding = static::$app->getBinding(static::getFacadeAccessor());

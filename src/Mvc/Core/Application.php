@@ -1,17 +1,20 @@
 <?php
 
-namespace maderarasto\Mvc;
+namespace Mvc\Core;
 
-use Mvc\Facade;
 use Mvc\Http\Request;
+use Mvc\Routing\Router;
 
 class Application
 {
+    protected Router $router;
     protected array $bindings = [];
 
     public function __construct()
     {
         Facade::setFacadeApplication($this);
+        $this->router = new Router();
+        $this->bind('router', $this->router);
     }
 
     public function getBinding($abstract)
@@ -26,8 +29,18 @@ class Application
 
     public function handleRequest()
     {
-        $this->bind('request', new Request());
-        var_dump(\Mvc\Facades\Request::method());
+        $request = new Request();
+        $this->bind('request', $request);
+
+        // TODO: process middlewares
+
+        $route = $this->router->findRoute($request);
+
+        if (!$route) {
+            throw new \Exception('Route not found');
+        }
+
+
     }
 }
 

@@ -1,5 +1,5 @@
 {
-  "name": "maderarasto/php-mvclib",
+  "name": "maderarasto/mvclib",
   "description": "A library for creating MVC application.",
   "type": "library",
   "minimum-stability": "stable",
@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "maderasrasto\\MvcLib\\": "src/"
+      "Mvc\\": "src/Mvc"
     }
   }
 }
